@@ -1,42 +1,37 @@
-// copy constructor
+// Using the static of the memeber function
 #include <iostream>
-class code
-{
-private:
-    int id;
+class test{
+    private:
+    int code;
+    static int count;
+    public:
+    void setcode(void){
+        code=count++;
+    }
+    void showcode(void){
+        std::cout<<"Object number:"<<code<<std::endl;
+    }
+    static void showcount(void)
+    {
+        std::cout<<"Count:"<<count<<std::endl;
+    }
 
-public:
-    code() {}
-    code(int a)
-    {
-        id = a;
-    }
-    // code(code &x)
-    // {
-    //     id = x.id;
-    // }
-    void display()
-    {
-        std::cout << id;
-    }
 };
+int test::count;
+
 int main()
 {
-    code A = 100;
-    code B(A);
-    code C = A;
-    code D;
-    D = A;
-    std::cout << "The value of A = ";
-    A.display();
-    std::cout << std::endl;
-    std::cout << "The value of B = ";
-    B.display();
-    std::cout << std::endl;
-    std::cout << "The value of C = ";
-    C.display();
-    std::cout << std::endl;
-    std::cout << "The value of D = ";
-    D.display();
-    std::cout << std::endl;
+    test t1,t2;
+    t1.setcode();
+    t2.setcode();
+    test::showcount();
+    test t3;
+    t3.setcode();
+    test::showcount();
+    t1.showcode();
+    t2.showcode();
+    t3.showcode();
+
+    
+
 }
